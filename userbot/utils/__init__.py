@@ -29,6 +29,7 @@ from .tools import (
     take_screen_shot,
     runcmd,
     edit_delete,
+    media_to_pic,
     edit_or_reply,
     media_type,
 )
