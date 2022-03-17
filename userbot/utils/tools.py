@@ -13,7 +13,7 @@ from userbot import bot, LOGS
 
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator, DocumentAttributeFilename
-
+from userbot import SUDO_USERS
 
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
