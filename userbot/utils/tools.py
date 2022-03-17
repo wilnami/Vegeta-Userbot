@@ -192,16 +192,14 @@ async def edit_or_reply(
     link_preview=None,
     file_name=None,
     aslink=False,
-    deflink=False,
-    noformat=False,
     linktext=None,
     caption=None,
 ):
     link_preview = link_preview or False
     reply_to = await event.get_reply_message()
-    if len(text) < 4096 and not deflink:
+    if len(text) < 4096:
         parse_mode = parse_mode or "md"
-        if not event.out and event.sender_id:
+        if event.sender_id in SUDO_USERS:
             if reply_to:
                 return await reply_to.reply(
                     text, parse_mode=parse_mode, link_preview=link_preview
@@ -211,13 +209,28 @@ async def edit_or_reply(
             )
         await event.edit(text, parse_mode=parse_mode, link_preview=link_preview)
         return event
-    if not noformat:
-        text = md_to_text(text)
-    if aslink or deflink:
-        linktext = linktext or "**Pesan Terlalu Panjang**"
-        response = await paste_message(text, pastetype="s")
-        text = linktext + f" [Lihat Disini]({response})"
-        if not event.out and event.sender_id:
+    asciich = ["*", "`", "_"]
+    for i in asciich:
+        text = re.sub(rf"\{i}", "", text)
+    if aslink:
+        linktext = linktext or "Pesan terlalu besar jadi ditempel ke nekobin"
+        try:
+            key = (
+                requests.post(
+                    "https://nekobin.com/api/documents", json={"content": text}
+                )
+                .json()
+                .get("result")
+                .get("key")
+            )
+            text = linktext + f" [Disini](https://nekobin.com/{key})"
+        except Exception:
+            text = re.sub(r"•", ">>", text)
+            kresult = requests.post(
+                "https://del.dog/documents", data=text.encode("UTF-8")
+            ).json()
+            text = linktext + f" [Disini](https://del.dog/{kresult['key']})"
+        if event.sender_id in SUDO_USERS:
             if reply_to:
                 return await reply_to.reply(text, link_preview=link_preview)
             return await event.reply(text, link_preview=link_preview)
@@ -231,7 +244,7 @@ async def edit_or_reply(
         await reply_to.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
-    if not event.out and event.sender_id:
+    if event.sender_id in SUDO_USERS:
         await event.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
