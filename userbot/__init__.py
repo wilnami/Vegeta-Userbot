@@ -235,12 +235,12 @@ ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", None)
 S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # Default .alive Logo
-ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/38b588acea66a3e4c43f7.jpg"
+ALIVE_PIC = os.environ.get(
+    "ALIVE_PIC") or "https://telegra.ph/file/38b588acea66a3e4c43f7.jpg"
 
 # Default .helpme logo
-HELP_LOGO = os.environ.get(
-   "HELP_LOGO") or "https://telegra.ph/file/38b588acea66a3e4c43f7.jpg"
+INLINE_PIC = os.environ.get(
+   "HELP_PIC") or "https://telegra.ph/file/38b588acea66a3e4c43f7.jpg"
 
 # Default .alive Instagram
 IG_ALIVE = os.environ.get("IG_ALIVE") or "instagram.com/yotteno"
@@ -505,8 +505,8 @@ with bot:
         dugmeler = CMD_HELP
         user = bot.get_me()
         uid = user.id
-        logo = ALIVE_LOGO
-        ramlogo = HELP_LOGO
+        pic = ALIVE_PIC
+        vegetapic = INLINE_PIC
         tgbotusername = BOT_USERNAME
 
         @tgbot.on(events.NewMessage(pattern="/start"))
@@ -521,7 +521,7 @@ with bot:
             )
             await tgbot.send_file(
                 event.chat_id,
-                logo,
+                pic,
                 caption=text,
                 buttons=[
                     [
@@ -549,7 +549,7 @@ with bot:
             if event.query.user_id == uid and query.startswith("@Ramubot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                    file=ramlogo,
+                    file=vegetapic,
                     link_preview=False,
                     text=f"**⚡ inline Vegeta-Userbot ⚡**\n\n⚡ **Owner** [Rendy](t.me/rencprx)\n⚡ **Jumlah** `{len(dugmeler)}` Modules",
                     buttons=buttons,
@@ -599,7 +599,7 @@ with bot:
             current_page_number = int(looters)
             buttons = paginate_help(current_page_number, dugmeler, "helpme")
             await event.edit(
-                file=ramlogo,
+                file=vegetapic,
                 buttons=buttons,
                 link_preview=False,
             )
@@ -612,7 +612,7 @@ with bot:
             if event.query.user_id == uid and query.startswith("@Ramubot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                    file=ramlogo,
+                    file=vegetapic,
                     link_preview=False,
                     text=f"🔥Vegeta-Userbot🔥\n\n⚡**Owner : [Rendy](t.me/CuteInspire)**\n\n⚡ **Bot Ver :** `9.1`\n✨ **𝗠odules :** `{len(dugmeler)}`",
                     buttons=buttons,
