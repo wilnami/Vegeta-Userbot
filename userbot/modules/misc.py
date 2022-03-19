@@ -125,7 +125,16 @@ async def repo_is_here(wannasee):
 async def repo_is_here(wannasee):
     """For .repo command, just returns the repo URL."""
     await wannasee.edit(
-        f"⇼ **GET STRING SESSION TELEGRAM :** [KLIK DISINI](https://replit.com/@Randi356/Vegeta-String)\n"
+        f"⇼ **GET STRING VIA WEBISTE :** [KLIK DISINI](https://replit.com/@Randi356/Vegeta-String)\n"
+        f"⇼ **GET STRING VIA BOT :** [KLIK DISINI](https://t.me/VegetaSessionBot?start)\n"
+    )
+
+@register(outgoing=True, pattern=r"^\.deploy$")
+async def repo_is_here(wannasee):
+    """For .repo command, just returns the repo URL."""
+    await wannasee.edit(
+        f"⇼ **DEPLOY VIA BOT :** [KLIK DISINI](https://telegram.dog/XTZ_HerokuBot?start=UmFuZGkzNTYvVmVnZXRhLVVzZXJib3QgVmVnZXRhLVVzZXJib3Q)\n"
+        f"⇼ **DEPLOY VIA WEBISTE:** [KLIK DISINI]https://heroku.com/deploy?template=https://github.com/Randi356/helper-v3\n"
     )
 
 
