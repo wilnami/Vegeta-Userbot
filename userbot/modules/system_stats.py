@@ -15,7 +15,7 @@ from datetime import datetime
 import psutil
 
 from userbot import (
-   ALIVE_LOGO, 
+   ALIVE_PIC, 
    ALIVE_NAME,
    GROUP_LINK,
    BOT_VER, 
@@ -255,9 +255,9 @@ async def amireallyalive(alive):
         f"▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰ \n"
         f"[🌹𝙸𝙽𝚂𝚃𝙰𝙶𝚁𝙰𝙼🌹]({IG_ALIVE}) || [{REPO_NAME}](https://github.com/Randi356/Vegeta-Userbot) || [𝐆𝐑𝐎𝐔𝐏]({GROUP_LINK}) \n"
         f"▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰")
-    if ALIVE_LOGO:
+    if ALIVE_PIC:
         try:
-            logo = ALIVE_LOGO
+            pic = ALIVE_PIC
             await alive.delete()
             msg = await bot.send_file(alive.chat_id, logo, caption=output)
             await asyncio.sleep(50)
@@ -292,11 +292,11 @@ async def amireallyalive(alive):
         f"**▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰**\n"
         f"[{REPO_NAME}](https://github.com/Randi356/Vegeta-Userbot) || [𝗚𝗥𝗢𝗨𝗣]({GROUP_LINK}) || [𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠]({IG_ALIVE})\n"
         f"**▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰ **")
-    if ALIVE_LOGO:
+    if ALIVE_PIC:
         try:
-            logo = ALIVE_LOGO
+            pic = ALIVE_PIC
             await alive.delete()
-            msg = await bot.send_file(alive.chat_id, logo, caption=output)
+            msg = await bot.send_file(alive.chat_id, pic, caption=output)
             await asyncio.sleep(50)
             await msg.delete()
         except BaseException:
@@ -337,11 +337,11 @@ async def amireallyalive(alive):
         f"**▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰**\n"
         f"[{REPO_NAME}](https://github.com/Randi356/Vegeta-Userbot) || [𝗚𝗥𝗢𝗨𝗣]({GROUP_LINK}) || [𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠]({IG_ALIVE})\n"
         f"**▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰ **")
-    if ALIVE_LOGO:
+    if ALIVE_PIC:
         try:
-            logo = ALIVE_LOGO
+            pic = ALIVE_PIC
             await alive.delete()
-            msg = await bot.send_file(alive.chat_id, logo, caption=output)
+            msg = await bot.send_file(alive.chat_id, pic, caption=output)
             await asyncio.sleep(50)
             await msg.delete()
         except BaseException:
@@ -418,9 +418,9 @@ async def amireallyalive(alive):
         f"┣❏🔮 **Telethon**: Versi {version.__version__} \n\n"
         f"🌸 SUPPORT [SUPPORT]({GROUP_LINK}) \n"
         f"📍 REPO [VEGETA USERBOT](https://github.com/Randi356/Vegeta-Userbot)\n")
-    if ALIVE_LOGO:
+    if ALIVE_PIC:
         try:
-            logo = ALIVE_LOGO
+            pic = ALIVE_PIC
             await alive.delete()
             msg = await bot.send_file(alive.chat_id, logo, caption=output)
             await asyncio.sleep(50)
