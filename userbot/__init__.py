@@ -82,6 +82,10 @@ BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", ""))
 BOTLOG = sb(os.environ.get("BOTLOG", "True"))
 LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 
+# Handler Userbot
+CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
+SUDO_HANDLER = os.environ.get("SUDO_HANDLER") or "$"
+
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
