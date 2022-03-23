@@ -9,11 +9,10 @@ import os.path
 from telethon.tl.functions.channels import JoinChannelRequest as Get
 from html_telegraph_poster import TelegraphPoster
 from typing import Optional, Union
-from userbot import bot, LOGS
+from userbot import LOGS, SUDO_USERS, bot
 
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator, DocumentAttributeFilename
-from userbot import SUDO_USERS
 
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
@@ -289,3 +288,28 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
 
 
 eod = edit_delete
+
+
+def text_set(text):
+    lines = []
+    if len(text) <= 55:
+        lines.append(text)
+    else:
+        all_lines = text.split("\n")
+        for line in all_lines:
+            if len(line) <= 55:
+                lines.append(line)
+            else:
+                k = len(line) // 55
+                for z in range(1, k + 2):
+                    lines.append(line[((z - 1) * 55) : (z * 55)])
+    return lines[:25]
+
+
+async def reply_id(event):
+    reply_to_id = None
+    if event.sender_id in SUDO_USERS:
+        reply_to_id = event.id
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    return reply_to_id
