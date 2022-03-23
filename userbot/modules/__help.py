@@ -20,19 +20,19 @@ import logging
 
 
 from userbot import BOT_USERNAME
-from userbot.events import register
+from userbot.utils import ren_cmd
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s",
     level=logging.WARNING)
 
 
-@register(outgoing=True, pattern=r"^\.helpme")
+@ren_cmd(pattern="helpme")
 async def yardim(event):
     try:
         tgbotusername = BOT_USERNAME
         if tgbotusername is not None:
-            results = await event.client.inline_query(tgbotusername, "@Ramubot")
+            results = await event.client.inline_query(tgbotusername, "@vgscanner_Bot")
             await results[0].click(
                 event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
             )
